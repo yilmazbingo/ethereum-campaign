@@ -6,7 +6,7 @@ address[] public deployedCampaigns;
 // args will be the args that Campaign conract's constructor need.
 // message variable will be Factory campaig. but we want the user to be sender of Campaign
 function createCampaign(uint minimum)public{
-// msg.sender is the user who tries to create campaign
+// msg.sender is the user who tries to create the campaign
 Campaign newCampaign=new Campaign(minimum,msg.sender);
 deployedCampaigns.push(address(newCampaign));
 
