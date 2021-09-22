@@ -5,6 +5,7 @@ contract CampaignFactory{
 address[] public deployedCampaigns;
 // args will be the args that Campaign conract's constructor need.
 // message variable will be Factory campaig. but we want the user to be sender of Campaign
+// person who calls this should be marked as manager
 function createCampaign(uint minimum)public{
 // msg.sender is the user who tries to create the campaign
 Campaign newCampaign=new Campaign(minimum,msg.sender);
@@ -54,6 +55,7 @@ uint approvalCount;
     }
 
     // anytime someone is going to send some money we need to mark the corresponding function as being payable
+    // when we send transaction we do not send in argument, we sent with msg.value
     function contribute() public payable{
         require(msg.value>minimumContribution);
         // keys are not stored in mapping, only the values
