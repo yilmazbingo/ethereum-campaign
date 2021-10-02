@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import Layout from "../../components/Layout";
+import ContributeForm from "../../components/Contribute Form";
 import factory from "../../../../ethereum/campaignFactoryInstance";
 import Campaign from "../../../../ethereum/campaign";
 import web3 from "../../../../ethereum/web3";
