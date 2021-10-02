@@ -5,16 +5,18 @@ import { Menu } from "semantic-ui-react";
 import Link from "next/link";
 
 const Header = () => {
+  // Menu.Item and Link clashes each other. Thats why I use only Link
   return (
     <Menu style={{ marginTop: "10px" }}>
+      {/* Link is a generic wrapper component that does not add any Html of its own. Instead it wraps its children with click event */}
       <Link href="/">
-        <a className="item">Test Coin</a>
+        <a className="item">Campaigns</a>
       </Link>
       <Menu.Menu position="right">
-        <Link href="/supply-chain/new">
-          <a className="item">Campaigns</a>
+        <Link href="/campaigns/new">
+          <a className="item">CrowdCoin</a>
         </Link>
-        <Link href="/supply-chain/new">
+        <Link href="/campaigns/new">
           <a className="item">+</a>
         </Link>
       </Menu.Menu>
