@@ -41,7 +41,7 @@ if (output.errors) {
   // if dir does not exist it will create it for us
   fs.ensureDirSync(buildPath);
   for (let contractName in contracts) {
-    console.log("contractName", contractName);
+    // console.log("contractName", contractName);
     const contract = contracts[contractName];
     fs.writeFileSync(
       path.resolve(buildPath, `${contractName}.json`),

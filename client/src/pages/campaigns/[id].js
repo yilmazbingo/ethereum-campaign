@@ -5,14 +5,21 @@ import ContributeForm from "../../components/Contribute Form";
 import factory from "../../../../ethereum/campaignFactoryInstance";
 import Campaign from "../../../../ethereum/campaign";
 import web3 from "../../../../ethereum/web3";
-import { Card, Button } from "semantic-ui-react";
+import { Card, Button, Grid } from "semantic-ui-react";
+import Link from "next/link";
 
 // we need to show summary here, Balance, min Contribution, pending reqs, contribution
 // if we handle this here we need to make a request for each detaul, which is too expensive
 // Instead add 'getSummary` method on solidity
 const ShowCampaign = (props) => {
-  const { minContribution, balance, requestsCount, donatorsCount, manager } =
-    props;
+  const {
+    address,
+    minContribution,
+    balance,
+    requestsCount,
+    donatorsCount,
+    manager,
+  } = props;
   const renderCards = () => {
     const items = [
       {
@@ -49,7 +56,25 @@ const ShowCampaign = (props) => {
     return <Card.Group items={items} />;
   };
 
-  return <Layout>{renderCards()}</Layout>;
+  return (
+    <Layout>
+      <h3> Campaign Show </h3>
+      <Grid>
+        {/* total sumup to 16 not 12 */}
+        <Grid.Column width={10}>
+          {renderCards()}
+          <Link href={`/campaigns/${address}/requests`}>
+            <a>
+              <Button primary> View Requests </Button>
+            </a>
+          </Link>
+        </Grid.Column>
+        <Grid.Column width={6}>
+          <ContributeForm address={address} />
+        </Grid.Column>
+      </Grid>
+    </Layout>
+  );
 };
 
 export const getServerSideProps = async (context) => {
@@ -59,6 +84,7 @@ export const getServerSideProps = async (context) => {
   const summary = await campaign.methods.getSummary().call();
   return {
     props: {
+      address: paramsId,
       minContribution: summary[0],
       balance: summary[1],
       requestsCount: summary[2],

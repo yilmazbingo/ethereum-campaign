@@ -18,16 +18,16 @@ deployedCampaigns.push(address(newCampaign));
 
     }
 
-contract Campaign{
+contract Campaign {
 // this is a defintion not an instance of Request. it is type
 // we only have to initialize value types, not need to initialzie reference types
-struct Request{
-string description;
-uint value;
-address payable receipient;
-// this is true after finalizing the request
-bool complete;
-uint approvalCount;
+    struct Request{
+        string description;
+        uint value;
+        address payable receipient;
+        // this is true after finalizing the request
+        bool complete;
+        uint approvalCount;
 
     }
 
@@ -105,6 +105,19 @@ uint approvalCount;
         request.complete=true;
 
 
+    }
+    // we need to display details of contract on UI. If i did not create this, I would make a request for each detail
+    function getSummary() public view returns (uint,uint,uint,uint,address){
+        return (
+            minimumContribution, 
+            address(this).balance, 
+            requests.length,
+            donatorsCount,manager
+        );
+    }
+
+    function getRequestsCount() public view returns(uint){
+        return requests.length;
     }
 
 }

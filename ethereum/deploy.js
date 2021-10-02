@@ -1,5 +1,6 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const Web3 = require("web3");
+const web3 = require("./web3");
+// import web3 from "./web3";
 // we are deploying the campaignFactory.
 const compiledFactory = require("./build/CampaignFactory.json");
 const config = require("../config");
@@ -9,19 +10,19 @@ const { abi, evm } = compiledFactory;
 const bytecode = evm.bytecode.object;
 const abi_string = JSON.stringify(abi);
 
-console.log("abi_String", abi_string);
+// console.log("abi_String", abi_string);
 
 const metamask_mnemonic = config.metamask_mnemonic;
 
-const ropsten_network = config.ropsten_network;
+const rinkeby_network = config.rinkeby_network;
 const provider = new HDWalletProvider({
   mnemonic: {
     phrase: metamask_mnemonic,
   },
-  providerOrUrl: ropsten_network,
+  providerOrUrl: rinkeby_network,
 });
 
-const web3 = new Web3(provider);
+// const web3 = new Web3(provider);
 
 const deploy = async () => {
   try {
