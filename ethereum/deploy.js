@@ -3,7 +3,7 @@ const web3 = require("./web3");
 // import web3 from "./web3";
 // we are deploying the campaignFactory.
 const compiledFactory = require("./build/CampaignFactory.json");
-const config = require("../config");
+// const config = require("../config");
 
 const { abi, evm } = compiledFactory;
 
@@ -12,14 +12,14 @@ const abi_string = JSON.stringify(abi);
 
 // console.log("abi_String", abi_string);
 
-const metamask_mnemonic = config.metamask_mnemonic;
+// const metamask_mnemonic = config.metamask_mnemonic;
 
-const rinkeby_network = config.rinkeby_network;
+// const rinkeby_network = config.rinkeby_network;
 const provider = new HDWalletProvider({
   mnemonic: {
-    phrase: metamask_mnemonic,
+    phrase: process.env.METAMAST,
   },
-  providerOrUrl: rinkeby_network,
+  providerOrUrl: RINKEBY_NODE,
 });
 
 // const web3 = new Web3(provider);

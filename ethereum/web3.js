@@ -1,7 +1,7 @@
 // import Web3 from "web3";
 const Web3 = require("web3");
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const config = require("../config");
+// const config = require("../config");
 
 let web3;
 if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {
@@ -12,9 +12,9 @@ if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {
   // we are on server or user is not runnint metamask
   const provider = new HDWalletProvider({
     mnemonic: {
-      phrase: config.metamask_mnemonic,
+      phrase: process.env.METAMAST,
     },
-    providerOrUrl: config.rinkeby_network,
+    providerOrUrl: RINKEBY_NODE,
   });
   web3 = new Web3(provider);
   // console.log("web3 in broeser", web3);
