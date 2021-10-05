@@ -11,7 +11,7 @@ export default function Home(props) {
   const { campaigns } = props;
   console.log("props", props);
   useEffect(() => {
-    // call() if we are not changing state
+    // call() if we are not changing stat
     // const callCampaigns = async () => {
     //   campaigns = await factory.methods.getDeployedCampaigns().call();
     //   return campaigns;
