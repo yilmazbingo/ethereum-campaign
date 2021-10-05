@@ -55,7 +55,7 @@ const HeadTags = (props) => {
         rel="stylesheet"
       ></link>
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
+      {/* Using the canonical tag prevents problems caused by identical or "duplicate" content appearing on multiple URLs */}
       <link
         rel="canonical"
         href={`${process.env.BASE_URL}${
