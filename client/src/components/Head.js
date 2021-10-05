@@ -62,10 +62,10 @@ const HeadTags = (props) => {
           canonicalPath ? canonicalPath : router.asPath
         }`}
       />
-      <script
+      {/* <script
         src="https://kit.fontawesome.com/fbadad80a0.js"
         crossOrigin="anonymous"
-      ></script>
+      ></script> */}
     </Head>
   );
 };
