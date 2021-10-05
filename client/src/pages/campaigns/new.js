@@ -21,11 +21,11 @@ const SupplyChainNew = () => {
       const connected_account = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
-      console.log("connected", connected_account);
+      // console.log("connected", connected_account);
       try {
         setLoading(true);
         setError("");
-        console.log("factorer", factory);
+        // console.log("factorer", factory);
 
         await factory.methods
           .createCampaign(minContribution)
@@ -46,11 +46,11 @@ const SupplyChainNew = () => {
 
   return (
     <Layout>
-      <h3>Create a Supply Chain</h3>
+      <h3>Create Campaign</h3>
       {/* if there is eerror show the Message property. !! converts string to boolean */}
       <Form onSubmit={onSubmit} error={!!error}>
         <Form.Field>
-          <label>Minimum Contribution</label>
+          <label style={{ color: "red" }}>Minimum Contribution</label>
           <Input
             label="wei"
             labelPosition="right"

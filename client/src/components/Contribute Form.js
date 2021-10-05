@@ -39,7 +39,7 @@ const ContributeForm = (props) => {
   return (
     <Form onSubmit={onSubmit} error={!!error}>
       <Form.Field>
-        <label> Amount to contribute </label>
+        <label style={{ color: "red" }}> Amount to Contribute </label>
         {/* all of the balance is in ether, gas fees are in wei */}
         <Input
           label="ether"

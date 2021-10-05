@@ -1,6 +1,9 @@
 html,
 body {
   padding: 0;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  /* background: conic-gradient(red, orange, yellow, green, blue); */
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -13,4 +16,54 @@ a {
 
 * {
   box-sizing: border-box;
+}
+label {
+  color: rgb(150, 61, 61) !important;
+}
+
+h3,
+h1,
+h2 {
+  color: #bd8787;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  word-spacing: 0.6rem;
+  font-family: Press Start;
+}
+.ui.card {
+  background-color: red;
+}
+.ui.fluid.card {
+  background-color: #390281;
+  color: black;
+  transition: all 0.2s ease;
+  padding: 1.5rem;
+}
+
+.ui.fluid.card:hover,
+.ui.fluid.card:active {
+  transform: scale(1.02);
+  background-color: #390281;
+  color: white;
+}
+
+.ui.card {
+  /* background-color: #291842 !important; */
+  color: white;
+}
+
+.content {
+  color: white !important;
+}
+.ui.card header {
+  color: white;
+}
+.ui.card:hover,
+.ui.card:active {
+  transform: scale(1.02);
+  background-color: white;
+  color: white;
+}
+.card-group {
+  color: white !important ;
 }

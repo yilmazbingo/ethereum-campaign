@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import factory from "../../../ethereum/campaignFactoryInstance";
-console.log("factory", factory);
-import styles from "../styles/Home.module.css";
+import classes from "../styles/Home.module.css";
 import { Card, Button } from "semantic-ui-react";
 
 export default function Home(props) {
@@ -36,12 +35,18 @@ export default function Home(props) {
         };
       });
 
-    return <Card.Group items={items} />;
+    return (
+      <Card.Group
+        className={classes.post}
+        style={{ backgroundColor: "#e48900" }}
+        items={items}
+      />
+    );
   };
   return (
     <Layout>
-      <div>
-        <h3> Open Campaigns </h3>
+      <div style={{ marginTop: "5rem" }}>
+        <h1> OPEN CAMPAIGNS </h1>
         <Link href="/campaigns/new">
           <a>
             <Button
@@ -55,15 +60,31 @@ export default function Home(props) {
 
         {renderCampaigns()}
       </div>
-      ;
     </Layout>
   );
 }
 
 export async function getServerSideProps(context) {
-  const campaigns = await factory.methods.getDeployedCampaign().call();
-  console.log("campaigns", campaigns);
+  let campaigns;
+  let campaignsCount;
+  try {
+    // campaigns = await factory.methods.getDeployedCampaign().call();
+    campaignsCount = await factory.methods.getCampaignCounts().call();
+    // getCampaignCounts().call();
+
+    campaigns = await Promise.all(
+      Array(parseInt(campaignsCount))
+        .fill()
+        .map((element, index) => {
+          return factory.methods.getDeployedCampaign(index).call();
+        })
+    );
+    console.log("camapigns in index", campaigns);
+  } catch (e) {
+    console.log("error in index server", e);
+  }
+  // console.log("campaigns", campaigns);
   return {
-    props: { campaigns: campaigns.length > 0 ? campaigns : [] },
+    props: { campaigns: campaigns || [] },
   };
 }

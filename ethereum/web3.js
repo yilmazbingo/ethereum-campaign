@@ -17,6 +17,6 @@ if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {
     providerOrUrl: config.rinkeby_network,
   });
   web3 = new Web3(provider);
-  console.log("web3 in broeser", web3);
+  // console.log("web3 in broeser", web3);
 }
 module.exports = web3;

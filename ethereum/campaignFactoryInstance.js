@@ -1,20 +1,20 @@
 const web3 = require("./web3");
-const Web3EthContract = require("web3-eth-contract");
-console.log("web3", web3);
+// const Web3EthContract = require("web3-eth-contract");
+// console.log("web3", web3);
 // const campaignFactory = require("../ethereum/build/CampaignFactory.json");
 import campaignFactory from "../ethereum/build/CampaignFactory.json";
 
 const factoryContractAccountInstance =
-  "0x1998A568729a2CE1858a09d8B92bEceEc63d7B6c";
-Web3EthContract.setProvider(
-  "wss://rinkeby.infura.io/ws/v3/6bbc88ad6ea44bd0a8442b596ea8b079"
-);
+  "0xa660A7Ea19782247cA2a19dDCCE50a9037Eabd7C";
+// Web3EthContract.setProvider(
+//   "wss://rinkeby.infura.io/ws/v3/6bbc88ad6ea44bd0a8442b596ea8b079"
+// );
 
 const campaignFactoryInstance = new web3.eth.Contract(
   campaignFactory.abi,
   factoryContractAccountInstance
 );
-console.log("camoaignafactoru instacne", campaignFactoryInstance);
+// console.log("camoaignafactoru instacne", campaignFactoryInstance);
 
 export default campaignFactoryInstance;
 

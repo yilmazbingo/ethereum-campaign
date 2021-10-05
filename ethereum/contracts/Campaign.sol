@@ -3,17 +3,24 @@ pragma solidity >=0.7.0 <0.9.0;
 
 contract CampaignFactory{
 address[] public deployedCampaigns;
+uint public campaignsCount;
+
 // args will be the args that Campaign conract's constructor need.
 // message variable will be Factory campaig. but we want the user to be sender of Campaign
 // person who calls this should be marked as manager
-function createCampaign(uint minimum)public{
-// msg.sender is the user who tries to create the campaign
-Campaign newCampaign=new Campaign(minimum,msg.sender);
-deployedCampaigns.push(address(newCampaign));
+    function createCampaign(uint minimum)public{
+    // msg.sender is the user who tries to create the campaign
+        Campaign newCampaign=new Campaign(minimum,msg.sender);
+        deployedCampaigns.push(address(newCampaign));
+        campaignsCount++;
 
     }
-    function getDeployedCampaign() public view returns(address[] memory){
-        return deployedCampaigns;
+    function getDeployedCampaign(uint index) public view returns(address ){
+        return deployedCampaigns[index];
+    }
+
+    function getCampaignCounts() public view returns(uint){
+        return campaignsCount;
     }
 
     }
@@ -112,12 +119,22 @@ contract Campaign {
             minimumContribution, 
             address(this).balance, 
             requests.length,
-            donatorsCount,manager
+            donatorsCount,
+            manager
         );
     }
-
+    // we cannot retrieve array of structs. so we use this in client to retireve by one one
     function getRequestsCount() public view returns(uint){
         return requests.length;
     }
 
 }
+
+// function getSummary() public view returns (uint,uint,uint,uint,address){
+//         return (
+//             minimumContribution, 
+//             address(this).balance, 
+//             requests.length,
+//             donatorsCount,manager
+//         );
+//     }

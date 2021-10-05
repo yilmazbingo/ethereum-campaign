@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
-import Layout from "../../components/Layout";
-import ContributeForm from "../../components/Contribute Form";
-import factory from "../../../../ethereum/campaignFactoryInstance";
-import Campaign from "../../../../ethereum/campaign";
-import web3 from "../../../../ethereum/web3";
+import Layout from "../../../components/Layout";
+import ContributeForm from "../../../components/Contribute Form";
+import factory from "../../../../../ethereum/campaignFactoryInstance";
+import Campaign from "../../../../../ethereum/campaign";
+import web3 from "../../../../../ethereum/web3";
 import { Card, Button, Grid } from "semantic-ui-react";
 import Link from "next/link";
 
@@ -58,20 +58,24 @@ const ShowCampaign = (props) => {
 
   return (
     <Layout>
-      <h3> Campaign Show </h3>
+      <h3> CAMPAIGN </h3>
       <Grid>
-        {/* total sumup to 16 not 12 */}
-        <Grid.Column width={10}>
-          {renderCards()}
-          <Link href={`/campaigns/${address}/requests`}>
-            <a>
-              <Button primary> View Requests </Button>
-            </a>
-          </Link>
-        </Grid.Column>
-        <Grid.Column width={6}>
-          <ContributeForm address={address} />
-        </Grid.Column>
+        <Grid.Row>
+          {/* total sumup to 16 not 12 */}
+          <Grid.Column width={10}>{renderCards()}</Grid.Column>
+          <Grid.Column width={6}>
+            <ContributeForm address={address} />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <Link href={`/campaigns/${address}/requests`}>
+              <a>
+                <Button primary> View Requests </Button>
+              </a>
+            </Link>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     </Layout>
   );
@@ -79,9 +83,13 @@ const ShowCampaign = (props) => {
 
 export const getServerSideProps = async (context) => {
   const paramsId = context.params.id;
-
   const campaign = Campaign(paramsId);
-  const summary = await campaign.methods.getSummary().call();
+  let summary;
+  try {
+    summary = await campaign.methods.getSummary().call();
+  } catch (error) {
+    console.log("errpor in campaigns/id", error);
+  }
   return {
     props: {
       address: paramsId,
