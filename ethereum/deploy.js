@@ -17,9 +17,9 @@ const abi_string = JSON.stringify(abi);
 // const rinkeby_network = config.rinkeby_network;
 const provider = new HDWalletProvider({
   mnemonic: {
-    phrase: process.env.METAMAST,
+    phrase: process.env.METAMASK,
   },
-  providerOrUrl: RINKEBY_NODE,
+  providerOrUrl: process.envRINKEBY_NODE,
 });
 
 // const web3 = new Web3(provider);

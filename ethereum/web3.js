@@ -12,9 +12,9 @@ if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {
   // we are on server or user is not runnint metamask
   const provider = new HDWalletProvider({
     mnemonic: {
-      phrase: process.env.METAMAST,
+      phrase: process.env.METAMASK,
     },
-    providerOrUrl: RINKEBY_NODE,
+    providerOrUrl: process.env.RINKEBY_NODE,
   });
   web3 = new Web3(provider);
   // console.log("web3 in broeser", web3);
