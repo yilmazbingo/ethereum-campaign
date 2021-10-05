@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form, Message, Input } from "semantic-ui-react";
-import Campaign from "../../../../../../ethereum/campaign";
+import Campaign from "../../../../../ethereum/campaign";
 import Link from "next/link";
 import Router from "next/router";
-import Layout from "../../../../components/Layout";
-import web3 from "../../../../../../ethereum/web3";
+import Layout from "@/components/Layout";
+import web3 from "../../../../../ethereum/web3";
 
 const NewRequest = (props) => {
   const [value, setValue] = useState();

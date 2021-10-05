@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Layout from "../../components/Layout";
+import Layout from "@/components/Layout";
 import { Form, Input, Message, Button } from "semantic-ui-react";
 import Router from "next/router";
-import factory from "../../../../ethereum/campaignFactoryInstance";
+import factory from "../../../ethereum/campaignFactoryInstance";
 
 const SupplyChainNew = () => {
   const [minContribution, setMinContribution] = useState("");

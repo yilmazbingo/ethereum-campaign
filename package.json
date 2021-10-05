@@ -1,20 +1,28 @@
 {
-  "name": "kickstarter",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "mocha"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.5.0",
     "fs-extra": "^10.0.0",
     "ganache-cli": "^6.12.2",
     "mocha": "^9.1.1",
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "semantic-ui-react": "^2.0.4",
     "solc": "^0.8.7-fixed",
+    "stream": "0.0.2",
     "web3": "^1.5.2"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2"
   }
 }

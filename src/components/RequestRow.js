@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Button } from "semantic-ui-react";
-import web3 from "../../../ethereum/web3";
-import Campaign from "../../../ethereum/campaign";
+import web3 from "../../ethereum/web3";
+import Campaign from "../../ethereum/campaign";
 
 export default function RequestRow(props) {
   const { id, request, address, donatorsCount } = props;

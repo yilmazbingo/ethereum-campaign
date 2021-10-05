@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../components/Layout";
-import factory from "../../../ethereum/campaignFactoryInstance";
-import classes from "../styles/Home.module.css";
+import Layout from "@/components/Layout";
+import factory from "../../ethereum/campaignFactoryInstance";
+import classes from "@/styles/Home.module.css";
 import { Card, Button } from "semantic-ui-react";
 
 export default function Home(props) {
