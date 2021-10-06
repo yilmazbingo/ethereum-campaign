@@ -49,41 +49,31 @@ export default function Home(props) {
   return (
     <Layout>
       <div style={{ marginTop: "5rem" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            textAlign: "center",
-            margin: "auto auto",
-            justifyContent: "space-around",
-            // width: "70%",
-            marginBottom: "2rem",
-            borderRadius: "1rem",
-          }}
-        >
-          <Message
+        {disabled && (
+          <div
             style={{
-              outline: "none !important",
-              border: "none !important",
-              backgroundColor: " rgb(150, 61, 61)",
-              flex: "1",
+              display: "flex",
+              flexDirection: "row",
+              textAlign: "center",
+              margin: "auto auto",
+              justifyContent: "space-around",
+              // width: "70%",
+              marginBottom: "2rem",
+              borderRadius: "1rem",
             }}
-            error
-            content="No Metamask wallet detected! You cannot interact with the contract"
-          />
-          {/* {error && (
-            <Button
+          >
+            <Message
               style={{
+                outline: "none !important",
+                border: "none !important",
                 backgroundColor: " rgb(150, 61, 61)",
-
-                border: "1px white solid",
+                flex: "1",
               }}
-              onClick={() => setError("")}
-            >
-              X
-            </Button>
-          )} */}
-        </div>
+              error
+              content="No Metamask wallet detected! You cannot interact with the contract"
+            />
+          </div>
+        )}
 
         <h1> OPEN CAMPAIGNS </h1>
         <Link href="/campaigns/new">
