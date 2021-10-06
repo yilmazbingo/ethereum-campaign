@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // semantic-ui-react gives components, not style
 // for css we could either install semantic-ui-css or add cdn to header
 import { Menu, Button } from "semantic-ui-react";
@@ -7,6 +7,13 @@ import classes from "../styles/components/Header.module.css";
 
 const Header = () => {
   // Menu.Item and Link clashes each other. Thats why I use only Link
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    if (typeof window.web3 !== "undefined") {
+      setDisabled(false);
+    }
+  }, [typeof window !== "undefined" && window.web3]);
   return (
     <Menu
       className={classes.menu}
@@ -27,7 +34,11 @@ const Header = () => {
           </a>
         </Link>
         <Link href="/campaigns/new">
-          <Button style={{ marginRight: 0 }} className="green">
+          <Button
+            disabled={disabled}
+            style={{ marginRight: 0 }}
+            className="green"
+          >
             <a>+</a>
           </Button>
         </Link>

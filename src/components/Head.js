@@ -53,7 +53,7 @@ const HeadTags = (props) => {
       <link
         href="https://fonts.googleapis.com/css2?family=Alice&family=Great+Vibes&family=Inconsolata&family=Indie+Flower&family=Lobster&family=Press+Start+2P&display=swap"
         rel="stylesheet"
-      ></link>
+      />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       {/* Using the canonical tag prevents problems caused by identical or "duplicate" content appearing on multiple URLs */}
       <link
