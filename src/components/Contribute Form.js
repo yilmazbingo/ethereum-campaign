@@ -32,6 +32,7 @@ const ContributeForm = (props) => {
       //   Router.replace(router.asPath);
       //   Router.(reload(window.location.pathname))
     } catch (error) {
+      console.log("erroro in contribution", error);
       setError(error.message);
     }
     setLoading(false);
@@ -48,7 +49,44 @@ const ContributeForm = (props) => {
           onChange={(e) => setAmount(e.target.value)}
         />
       </Form.Field>
-      <Message error header="Oops!" content={error} />
+      {/* <Message error header="Oops!" content={error} /> */}
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          // backgroundColor: " rgb(150, 61, 61)",,
+          // background: "linear-gradient(to right, #0f0c29, #302b63, #24243e)",
+          justifyContent: "space-around",
+          marginBottom: "2rem",
+          borderRadius: "1rem",
+        }}
+      >
+        <Message
+          style={{
+            width: "90%",
+            margin: "auto auto",
+            outline: "none !important",
+            border: "none !important",
+            backgroundColor: " rgb(150, 61, 61)",
+            flex: "1",
+          }}
+          error
+          content={`Oops!  ${error} `}
+        />
+        {error && (
+          <Button
+            style={{
+              backgroundColor: " rgb(150, 61, 61)",
+
+              border: "1px white solid",
+            }}
+            onClick={() => setError("")}
+          >
+            X
+          </Button>
+        )}
+      </div>
       <Button primary loading={loading}>
         Contribute
       </Button>
