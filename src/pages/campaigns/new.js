@@ -26,7 +26,7 @@ const SupplyChainNew = () => {
         setLoading(true);
         setError("");
         // console.log("factorer", factory);
-
+        console.log("minContri", minContribution);
         await factory.methods
           .createCampaign(minContribution)
           // whenever we send transactions in the browser, metamask will automatically calculate the amount of gas we need to run this function. so we dont need to specify
@@ -59,7 +59,41 @@ const SupplyChainNew = () => {
           />
         </Form.Field>
         {/* Message component does not show by default. thats why we add error property o form */}
-        <Message error header="Error" content={error} />
+        {/* {error && <Message error header="Error" content={error} />} */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginBottom: "2rem",
+            borderRadius: "1rem",
+          }}
+        >
+          <Message
+            style={{
+              width: "90%",
+              margin: "auto auto",
+              outline: "none !important",
+              border: "none !important",
+              backgroundColor: " rgb(150, 61, 61)",
+              flex: "1",
+            }}
+            error
+            content={`Oops!  ${error} `}
+          />
+          {error && (
+            <Button
+              style={{
+                backgroundColor: " rgb(150, 61, 61)",
+
+                border: "1px white solid",
+              }}
+              onClick={() => setError("")}
+            >
+              X
+            </Button>
+          )}
+        </div>
         <Message success header="Success" content={successMessage} />
         {/* loading will show the spinner */}
         <Button loading={loading} primary>

@@ -3,7 +3,7 @@ import { Button, Table } from "semantic-ui-react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import RequestRow from "@/components/RequestRow";
-import Campaign from "../../../../../ethereum/web3";
+import Campaign from "../../../../../ethereum/campaign";
 export default function Index(props) {
   const { address, requests, donatorsCount, requestCount } = props;
   const { Header, Row, HeaderCell, Body } = Table;

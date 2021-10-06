@@ -2,7 +2,6 @@
 const Web3 = require("web3");
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 // const config = require("../config");
-console.log("process.env.METAMASK", process.env.METAMASK);
 
 let web3;
 if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {

@@ -19,7 +19,7 @@ const provider = new HDWalletProvider({
   mnemonic: {
     phrase: process.env.METAMASK,
   },
-  providerOrUrl: process.envRINKEBY_NODE,
+  providerOrUrl: process.env.RINKEBY_NODE,
 });
 
 // const web3 = new Web3(provider);
@@ -36,7 +36,7 @@ const deploy = async () => {
       .send({ from: accounts[0], gas: 5000000 });
     // this address is used in etherscan to find the account
     console.log("Contract deployed to", result.options.address);
-    console.log("ABI:" + abi_string);
+    // console.log("ABI:" + abi_string);
   } catch (error) {
     console.log(error);
   }

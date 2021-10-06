@@ -1,23 +1,21 @@
-import React, { useEffect } from "react";
-import Head from "next/head";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
+
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import factory from "../../ethereum/campaignFactoryInstance";
 import classes from "@/styles/Home.module.css";
-import { Card, Button } from "semantic-ui-react";
+import { Card, Button, Message } from "semantic-ui-react";
 
 export default function Home(props) {
+  const [disabled, setDisabled] = useState(false);
   const { campaigns } = props;
+
   console.log("props", props);
   useEffect(() => {
-    // call() if we are not changing stat
-    // const callCampaigns = async () => {
-    //   campaigns = await factory.methods.getDeployedCampaigns().call();
-    //   return campaigns;
-    // };
-    // callCampaigns();
-  });
+    if (typeof window.web3 === "undefined") {
+      setDisabled(true);
+    }
+  }, []);
 
   const renderCampaigns = () => {
     const items =
@@ -27,7 +25,12 @@ export default function Home(props) {
           header: address,
           description: (
             <Link href={`campaigns/${address}`}>
-              <a> View Campaign</a>
+              <Button
+                disabled={disabled}
+                style={{ color: "green", marginTop: "1rem" }}
+              >
+                <a style={{ color: "black" }}> View Campaign</a>
+              </Button>
             </Link>
           ),
           // fluid:true, will stretch its entire width
@@ -46,12 +49,50 @@ export default function Home(props) {
   return (
     <Layout>
       <div style={{ marginTop: "5rem" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            textAlign: "center",
+            margin: "auto auto",
+            justifyContent: "space-around",
+            // width: "70%",
+            marginBottom: "2rem",
+            borderRadius: "1rem",
+          }}
+        >
+          <Message
+            style={{
+              outline: "none !important",
+              border: "none !important",
+              backgroundColor: " rgb(150, 61, 61)",
+              flex: "1",
+            }}
+            error
+            content="No Metamask wallet detected! You cannot interact with the contract"
+          />
+          {/* {error && (
+            <Button
+              style={{
+                backgroundColor: " rgb(150, 61, 61)",
+
+                border: "1px white solid",
+              }}
+              onClick={() => setError("")}
+            >
+              X
+            </Button>
+          )} */}
+        </div>
+
         <h1> OPEN CAMPAIGNS </h1>
         <Link href="/campaigns/new">
           <a>
             <Button
-              floated="right"
+              disabled={disabled}
+              // floated="right"
               content="Create Campaign"
+              style={{ marginBottom: "2rem" }}
               icon="add circle"
               primary
             />

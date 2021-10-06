@@ -100,7 +100,6 @@ const NewRequest = (props) => {
         </div>
 
         <Button primary loading={loading}>
-          {" "}
           Create!
         </Button>
       </Form>
