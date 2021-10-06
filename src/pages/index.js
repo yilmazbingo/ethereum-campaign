@@ -7,15 +7,15 @@ import classes from "@/styles/Home.module.css";
 import { Card, Button, Message } from "semantic-ui-react";
 
 export default function Home(props) {
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const { campaigns } = props;
 
   console.log("props", props);
   useEffect(() => {
-    if (typeof window.web3 === "undefined") {
-      setDisabled(true);
+    if (typeof window.web3 !== "undefined") {
+      setDisabled(false);
     }
-  }, []);
+  }, [typeof window !== "undefined" && window.web3]);
 
   const renderCampaigns = () => {
     const items =
