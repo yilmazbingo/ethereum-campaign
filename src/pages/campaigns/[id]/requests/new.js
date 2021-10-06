@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Message, Input } from "semantic-ui-react";
+import { Button, Form, Message, Input, Icon } from "semantic-ui-react";
 import Campaign from "../../../../../ethereum/campaign";
 import Link from "next/link";
 import Router from "next/router";
@@ -40,7 +40,10 @@ const NewRequest = (props) => {
   return (
     <Layout>
       <Link href={`/campaigns/${address}/requests`}>
-        <a>Back</a>
+        <Button icon labelPosition="left">
+          <a>Back</a>
+          <Icon name="left arrow" />
+        </Button>
       </Link>
       <h3> Create Request </h3>
       <Form onSubmit={onSubmit} error={!!error}>

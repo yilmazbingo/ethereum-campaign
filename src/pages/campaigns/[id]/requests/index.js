@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Table } from "semantic-ui-react";
+import { Button, Table, Icon } from "semantic-ui-react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import RequestRow from "@/components/RequestRow";
@@ -23,6 +23,12 @@ export default function Index(props) {
 
   return (
     <Layout>
+      <Link href={`/campaigns/${address}`}>
+        <Button icon labelPosition="left">
+          <a>Back</a>
+          <Icon name="left arrow" />
+        </Button>
+      </Link>
       <h3>Requests</h3>
       <Link href={`/campaigns/${address}/requests/new`}>
         <a>

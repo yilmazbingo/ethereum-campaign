@@ -70,7 +70,7 @@ export default function Home(props) {
                 flex: "1",
               }}
               error
-              content="No Metamask wallet detected! You cannot interact with the contract"
+              content="No Metamask wallet detected!!!  You cannot interact with the contract"
             />
           </div>
         )}

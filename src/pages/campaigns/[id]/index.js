@@ -5,8 +5,9 @@ import ContributeForm from "@/components/Contribute Form";
 import factory from "../../../../ethereum/campaignFactoryInstance";
 import Campaign from "../../../../ethereum/campaign";
 import web3 from "../../../../ethereum/web3";
-import { Card, Button, Grid } from "semantic-ui-react";
+import { Card, Button, Grid, Icon } from "semantic-ui-react";
 import Link from "next/link";
+import Router from "next/router";
 
 // we need to show summary here, Balance, min Contribution, pending reqs, contribution
 // if we handle this here we need to make a request for each detaul, which is too expensive
@@ -20,6 +21,14 @@ const ShowCampaign = (props) => {
     donatorsCount,
     manager,
   } = props;
+  useEffect(() => {
+    if (typeof window.web3 === "undefined") {
+      Router.push("/");
+    }
+    if (!web3) {
+      Router.push("/");
+    }
+  }, [typeof window !== "undefined" && window.web3]);
   const renderCards = () => {
     const items = [
       {
@@ -58,7 +67,13 @@ const ShowCampaign = (props) => {
 
   return (
     <Layout>
-      <h3> CAMPAIGN </h3>
+      <Link href="/">
+        <Button icon labelPosition="left">
+          <a>Back</a>
+          <Icon name="left arrow" />
+        </Button>
+      </Link>
+      <h2> CAMPAIGN </h2>
       <Grid>
         <Grid.Row>
           {/* total sumup to 16 not 12 */}
@@ -93,7 +108,7 @@ export const getServerSideProps = async (context) => {
   return {
     props: {
       address: paramsId,
-      minContribution: summary[0],
+      minContribution: summary && summary[0],
       balance: summary[1],
       requestsCount: summary[2],
       donatorsCount: summary[3],

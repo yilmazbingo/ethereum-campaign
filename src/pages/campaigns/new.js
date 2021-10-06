@@ -50,7 +50,7 @@ const SupplyChainNew = () => {
       {/* if there is eerror show the Message property. !! converts string to boolean */}
       <Form onSubmit={onSubmit} error={!!error}>
         <Form.Field>
-          <label style={{ color: "red" }}>Minimum Contribution</label>
+          <label style={{ color: "red" }}>Minimum Contribution-(100)</label>
           <Input
             label="wei"
             labelPosition="right"
